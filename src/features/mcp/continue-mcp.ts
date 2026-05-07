@@ -140,7 +140,6 @@ export class ContinueMcp extends ToolMcp {
 
     const block: Record<string, unknown> = {
       name: "rulesync-mcp",
-      version: "0.0.1",
       schema: "v1",
       mcpServers: continueServers,
     };

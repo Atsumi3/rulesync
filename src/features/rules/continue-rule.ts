@@ -27,6 +27,15 @@ export const ContinueRuleFrontmatterSchema = z.looseObject({
   invokable: z.optional(z.boolean()),
 });
 
+function parseContinueGlobs(value: string | string[] | undefined): string[] {
+  if (Array.isArray(value)) return value;
+  if (typeof value !== "string") return [];
+  return value
+    .split(",")
+    .map((g) => g.trim())
+    .filter((g) => g.length > 0);
+}
+
 export type ContinueRuleFrontmatter = z.infer<typeof ContinueRuleFrontmatterSchema>;
 
 export type ContinueRuleParams = {
@@ -79,13 +88,7 @@ export class ContinueRule extends ToolRule {
   toRulesyncRule(): RulesyncRule {
     const targets: RulesyncTargets = ["*"];
 
-    const continueGlobs = this.frontmatter.globs;
-    const globsArray: string[] = Array.isArray(continueGlobs)
-      ? continueGlobs
-      : typeof continueGlobs === "string" && continueGlobs.trim() !== ""
-        ? continueGlobs.split(",").map((g) => g.trim()).filter((g) => g.length > 0)
-        : [];
-
+    const globsArray = parseContinueGlobs(this.frontmatter.globs);
     const isAlwaysApply = this.frontmatter.alwaysApply === true;
 
     const rulesyncFrontmatter: RulesyncRuleFrontmatter = {
