@@ -84,6 +84,13 @@ export const GITIGNORE_ENTRY_REGISTRY: ReadonlyArray<GitignoreEntryTag> = [
   { target: "codexcli", feature: "general", entry: "**/.codex/config.toml" },
   { target: "codexcli", feature: "hooks", entry: "**/.codex/hooks.json" },
 
+  // Continue.dev
+  { target: "continue", feature: "rules", entry: "**/.continue/rules/" },
+  { target: "continue", feature: "commands", entry: "**/.continue/prompts/" },
+  { target: "continue", feature: "subagents", entry: "**/.continue/agents/" },
+  { target: "continue", feature: "mcp", entry: "**/.continue/mcpServers/" },
+  { target: "continue", feature: "ignore", entry: "**/.continueignore" },
+
   // Cursor
   { target: "cursor", feature: "rules", entry: "**/.cursor/" },
   { target: "cursor", feature: "ignore", entry: "**/.cursorignore" },

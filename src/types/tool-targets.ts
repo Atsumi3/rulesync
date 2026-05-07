@@ -13,6 +13,7 @@ export const ALL_TOOL_TARGETS = [
   "claudecode-legacy",
   "cline",
   "codexcli",
+  "continue",
   "copilot",
   "copilotcli",
   "cursor",

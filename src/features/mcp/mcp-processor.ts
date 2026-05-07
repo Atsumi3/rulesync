@@ -10,6 +10,7 @@ import type { Logger } from "../../utils/logger.js";
 import { ClaudecodeMcp } from "./claudecode-mcp.js";
 import { ClineMcp } from "./cline-mcp.js";
 import { CodexcliMcp } from "./codexcli-mcp.js";
+import { ContinueMcp } from "./continue-mcp.js";
 import { CopilotMcp } from "./copilot-mcp.js";
 import { CopilotcliMcp } from "./copilotcli-mcp.js";
 import { CursorMcp } from "./cursor-mcp.js";
@@ -40,6 +41,7 @@ const mcpProcessorToolTargetTuple = [
   "claudecode-legacy",
   "cline",
   "codexcli",
+  "continue",
   "copilot",
   "copilotcli",
   "cursor",
@@ -134,6 +136,18 @@ const toolMcpFactories = new Map<McpProcessorToolTarget, ToolMcpFactory>([
         supportsGlobal: true,
         supportsEnabledTools: true,
         supportsDisabledTools: true,
+      },
+    },
+  ],
+  [
+    "continue",
+    {
+      class: ContinueMcp,
+      meta: {
+        supportsProject: true,
+        supportsGlobal: false,
+        supportsEnabledTools: false,
+        supportsDisabledTools: false,
       },
     },
   ],

@@ -11,6 +11,7 @@ import type { Logger } from "../../utils/logger.js";
 import { AugmentcodeIgnore } from "./augmentcode-ignore.js";
 import { ClaudecodeIgnore } from "./claudecode-ignore.js";
 import { ClineIgnore } from "./cline-ignore.js";
+import { ContinueIgnore } from "./continue-ignore.js";
 import { CursorIgnore } from "./cursor-ignore.js";
 import { GeminiCliIgnore } from "./geminicli-ignore.js";
 import { GooseIgnore } from "./goose-ignore.js";
@@ -36,6 +37,7 @@ const ignoreProcessorToolTargets: ToolTarget[] = [
   "claudecode",
   "claudecode-legacy",
   "cline",
+  "continue",
   "cursor",
   "geminicli",
   "goose",
@@ -68,6 +70,7 @@ const toolIgnoreFactories = new Map<IgnoreProcessorToolTarget, ToolIgnoreFactory
   ["claudecode", { class: ClaudecodeIgnore }],
   ["claudecode-legacy", { class: ClaudecodeIgnore }],
   ["cline", { class: ClineIgnore }],
+  ["continue", { class: ContinueIgnore }],
   ["cursor", { class: CursorIgnore }],
   ["geminicli", { class: GeminiCliIgnore }],
   ["goose", { class: GooseIgnore }],
