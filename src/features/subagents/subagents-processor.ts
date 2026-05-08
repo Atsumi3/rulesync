@@ -12,6 +12,7 @@ import type { Logger } from "../../utils/logger.js";
 import { AgentsmdSubagent } from "./agentsmd-subagent.js";
 import { ClaudecodeSubagent } from "./claudecode-subagent.js";
 import { CodexCliSubagent } from "./codexcli-subagent.js";
+import { ContinueSubagent } from "./continue-subagent.js";
 import { CopilotSubagent } from "./copilot-subagent.js";
 import { CopilotcliSubagent } from "./copilotcli-subagent.js";
 import { CursorSubagent } from "./cursor-subagent.js";
@@ -67,6 +68,7 @@ const subagentsProcessorToolTargetTuple = [
   "claudecode",
   "claudecode-legacy",
   "codexcli",
+  "continue",
   "copilot",
   "copilotcli",
   "cursor",
@@ -117,6 +119,13 @@ const toolSubagentFactories = new Map<SubagentsProcessorToolTarget, ToolSubagent
     {
       class: CodexCliSubagent,
       meta: { supportsSimulated: false, supportsGlobal: true, filePattern: "*.toml" },
+    },
+  ],
+  [
+    "continue",
+    {
+      class: ContinueSubagent,
+      meta: { supportsSimulated: false, supportsGlobal: false, filePattern: "*.md" },
     },
   ],
   [

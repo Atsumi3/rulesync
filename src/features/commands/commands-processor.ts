@@ -14,6 +14,7 @@ import { AntigravityCommand } from "./antigravity-command.js";
 import { ClaudecodeCommand } from "./claudecode-command.js";
 import { ClineCommand } from "./cline-command.js";
 import { CodexcliCommand } from "./codexcli-command.js";
+import { ContinueCommand } from "./continue-command.js";
 import { CopilotCommand } from "./copilot-command.js";
 import { CursorCommand } from "./cursor-command.js";
 import { FactorydroidCommand } from "./factorydroid-command.js";
@@ -71,6 +72,7 @@ const commandsProcessorToolTargetTuple = [
   "claudecode-legacy",
   "cline",
   "codexcli",
+  "continue",
   "copilot",
   "cursor",
   "factorydroid",
@@ -167,6 +169,19 @@ const toolCommandFactories = new Map<CommandsProcessorToolTarget, ToolCommandFac
         extension: "md",
         supportsProject: false,
         supportsGlobal: true,
+        isSimulated: false,
+        supportsSubdirectory: false,
+      },
+    },
+  ],
+  [
+    "continue",
+    {
+      class: ContinueCommand,
+      meta: {
+        extension: "md",
+        supportsProject: true,
+        supportsGlobal: false,
         isSimulated: false,
         supportsSubdirectory: false,
       },

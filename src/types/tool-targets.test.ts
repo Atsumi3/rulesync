@@ -21,6 +21,7 @@ describe("tool targets", () => {
         "claudecode-legacy",
         "cline",
         "codexcli",
+        "continue",
         "copilot",
         "copilotcli",
         "cursor",

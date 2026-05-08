@@ -85,6 +85,7 @@ See [Quick Start guide](https://dyoshikawa.github.io/rulesync/getting-started/qu
 | Factory Droid       | factorydroid | ✅ 🌏 |        |  ✅ 🌏   |    🎮    |    🎮     |   🎮   | ✅ 🌏 |             |
 | OpenCode            | opencode     | ✅ 🌏 |        | ✅ 🌏 🔧 |  ✅ 🌏   |   ✅ 🌏   | ✅ 🌏  | ✅ 🌏 |    ✅ 🌏    |
 | Cline               | cline        |  ✅   |   ✅   |    ✅    |  ✅ 🌏   |           | ✅ 🌏  |       |     ✅      |
+| Continue.dev        | continue     |  ✅   |   ✅   |    ✅    |    ✅    |    ✅     |        |       |             |
 | Kilo Code           | kilo         | ✅ 🌏 |   ✅   |    ✅    |  ✅ 🌏   |           | ✅ 🌏  |       |    ✅ 🌏    |
 | Roo Code            | roo          |  ✅   |   ✅   |    ✅    |    ✅    |    🎮     | ✅ 🌏  |       |             |
 | Rovodev (Atlassian) | rovodev      | ✅ 🌏 |        |    🌏    |          |   ✅ 🌏   | ✅ 🌏  |       |             |
@@ -106,6 +107,39 @@ See [Quick Start guide](https://dyoshikawa.github.io/rulesync/getting-started/qu
 - 🔧: Supports MCP tool config (`enabledTools`/`disabledTools`)
 
 Some features accept per-feature options (e.g., Claude Code's `ignore` feature supports `fileMode: "local"` to write to `settings.local.json` instead of `settings.json`). See [Configuration > Per-feature options](https://dyoshikawa.github.io/rulesync/guide/configuration#per-feature-options) for details.
+
+## Local Development
+
+To try a local checkout (e.g. when developing or verifying a new tool integration such as `--targets continue`) from another project:
+
+```bash
+# 1. Install dependencies in the rulesync repo
+git clone https://github.com/dyoshikawa/rulesync.git
+cd rulesync
+pnpm install
+
+# 2. Run the CLI via tsx without building (edits in src/ are reflected immediately)
+pnpm dev --help
+pnpm dev generate --targets continue
+
+# 3. Optional: register a shell alias to invoke the local CLI from any directory
+echo "alias rulesync-dev='pnpm --dir $(pwd) exec tsx $(pwd)/src/cli/index.ts'" >> ~/.zshrc
+source ~/.zshrc
+
+# 4. Use it inside any project under development
+cd /path/to/your/project
+rulesync-dev init
+rulesync-dev generate --targets continue
+```
+
+To run lint, typecheck, and tests:
+
+```bash
+pnpm check    # fmt + oxlint + eslint + typecheck
+pnpm test     # vitest
+```
+
+> **macOS note:** Some transitive dependencies ship a `.gitmodules` file. On recent macOS versions, TCC may block writing it, causing `pnpm install` to fail with `ERR_PNPM_EPERM`. To resolve, enable your terminal app under **System Settings → Privacy & Security → App Management**, then fully quit and relaunch the terminal.
 
 ## Documentation
 

@@ -36,6 +36,15 @@ export const RulesyncRuleFrontmatterSchema = z.object({
       paths: z.optional(z.array(z.string())),
     }),
   ),
+  continue: z.optional(
+    z.looseObject({
+      alwaysApply: z.optional(z.boolean()),
+      globs: z.optional(z.array(z.string())),
+      regex: z.optional(z.string()),
+      invokable: z.optional(z.boolean()),
+      name: z.optional(z.string()),
+    }),
+  ),
   cursor: z.optional(
     z.looseObject({
       alwaysApply: z.optional(z.boolean()),

@@ -39,6 +39,7 @@ import { ClaudecodeLegacyRule } from "./claudecode-legacy-rule.js";
 import { ClaudecodeRule } from "./claudecode-rule.js";
 import { ClineRule } from "./cline-rule.js";
 import { CodexcliRule } from "./codexcli-rule.js";
+import { ContinueRule } from "./continue-rule.js";
 import { CopilotRule } from "./copilot-rule.js";
 import { CopilotcliRule } from "./copilotcli-rule.js";
 import { CursorRule } from "./cursor-rule.js";
@@ -77,6 +78,7 @@ const rulesProcessorToolTargets: ToolTarget[] = [
   "claudecode-legacy",
   "cline",
   "codexcli",
+  "continue",
   "copilot",
   "copilotcli",
   "cursor",
@@ -327,6 +329,17 @@ const toolRuleFactories = new Map<RulesProcessorToolTarget, ToolRuleFactory>([
         extension: "md",
         supportsGlobal: true,
         ruleDiscoveryMode: "toon",
+      },
+    },
+  ],
+  [
+    "continue",
+    {
+      class: ContinueRule,
+      meta: {
+        extension: "md",
+        supportsGlobal: false,
+        ruleDiscoveryMode: "auto",
       },
     },
   ],
